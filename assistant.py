@@ -8,12 +8,12 @@ import requests
 import time
 
 config = {
-    'apiKey': "AIzaSyBOrWtvqsaEPfYjNhPUV9YvEQ_t6aV4iug",
-    'authDomain': "fir-test-e5d24.firebaseapp.com",
-    'databaseURL': "https://fir-test-e5d24.firebaseio.com",
-    'projectId': "fir-test-e5d24",
-    'storageBucket': "fir-test-e5d24.appspot.com",
-    'messagingSenderId': "332768780595"
+    'apiKey': "API KEY", # API KEY Here
+    'authDomain': "name of app domain",
+    'databaseURL': "url ",
+    'projectId': "id details",
+    'storageBucket': "storage bucked",
+    'messagingSenderId': "sener id"
 }
 firebase = pyrebase.initialize_app(config)
 
@@ -46,7 +46,7 @@ def info(query):
 
         if 'tom' in query:
             query = query.replace('tom', '')
-            client = wolframalpha.Client("PX76HL-QL5KJTK9UW")
+            client = wolframalpha.Client("API KEY")
             res = client.query(query)
             ans = next(res.results).text
             ans = ans.replace('Stephen Wolfram', 'Tech Breed')
