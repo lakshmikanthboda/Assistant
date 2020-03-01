@@ -3,8 +3,8 @@ import smtplib
 # https://myaccount.google.com/lesssecureapps
 def send(mail,msg):
     rec = mail
-    sen = "boda.lakshmikanth@gmail.com"
-    passw = "Password@123"
+    sen = "gmail"
+    passw = "Password"
     mess = msg
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
