@@ -90,7 +90,7 @@ def sms():
     print(payload)
 
     headers = {
-        'authorization': "wZQGLgmX9hPUNMxSHxzQhGhktYZgo21lLeGoPnWE5zL6PkkP4Y9Fd4Z2m06X",
+        'authorization': "API KEY",
         'Content-Type': "application/x-www-form-urlencoded",
         'Cache-Control': "no-cache"
     }
@@ -163,7 +163,7 @@ def info(query):
             ans = next(res.results).text
             ans = ans.replace('Stephen Wolfram', 'Tech Breed')
             ans = ans.replace('Wolfram|Alpha', 'Tachyon')
-            ans = ans.replace('18/05/2009', '25-02-2020')
+            ans = ans.replace('18/05/2009', '01-03-2020')
             print(ans)
             speak(ans)
             gett()
