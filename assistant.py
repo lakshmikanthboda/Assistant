@@ -113,7 +113,6 @@ def rdata():
         g = sheet.cell_value(i, 0)
         if int(pp) == g:
             pp = str(pp)
-            pp.replace("L", "")
             index = i
             break
     idno = int(sheet.cell_value(i, 0))
