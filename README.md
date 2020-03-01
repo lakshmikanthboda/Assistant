@@ -15,7 +15,7 @@ Command Mode:
 
 -> email - For sending emails using google smtp
 
-The most important part of the assistant is Command Mode as we can customize it to our needs and we can automate all our daily tasks or boring tasks using thos mode.
+The most important part of the assistant is Command Mode as we can customize it to our needs and we can automate all our daily tasks or boring tasks using this mode.
 
 -->This mode also helps handicaped people for doing their works 
 
