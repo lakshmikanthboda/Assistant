@@ -34,7 +34,8 @@ def gett():
         gett()
         
 
-
+def cmod():
+    pass
 
 
 def info(query):
