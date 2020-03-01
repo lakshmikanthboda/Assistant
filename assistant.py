@@ -33,9 +33,69 @@ def gett():
     else:
         gett()
         
+def sms():
+    speak('Say Phone Number')
+    users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").get()
+    h = users.val()
+    result = h['pno']
+    if result == '1':
+        users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").update({'pno': 0})
+        no = h['name']
+        print(no)
+    else:
+        sms()
+    time.sleep(1)
+    speak('Say message')
+    global temp
+    base()
+    msg=temp
 
+    url = "https://www.fast2sms.com/dev/bulk"
+    no = no.replace('"', '')
+
+    payload = "sender_id=FSTSMS&message=" + str(msg) + "&language=english&route=p&numbers=" + str(no)
+
+    print(payload)
+
+    headers = {
+        'authorization': "wZQGLgmX9hPUNMxSHxzQhGhktYZgo21lLeGoPnWE5zL6PkkP4Y9Fd4Z2m06X",
+        'Content-Type': "application/x-www-form-urlencoded",
+        'Cache-Control': "no-cache"
+    }
+
+    response = requests.request("POST", url, data=payload, headers=headers)
+
+    print(response.text)
+    speak('sms sent')
+    cmod()
+    
+def cmds(g):
+    if 'sms' in g:
+        sms()
+    elif 'email' in g:
+        sendmail()
+    elif 'roll' in g:
+        rdata()
+    elif 'home' in g:
+        gett()
+    else:
+        speak('No command found')
+        cmod()
+        
+        
 def cmod():
-    pass
+        speak('command mode activated')
+    users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").get()
+    h = users.val()
+
+    result = h['pno']
+    if result == '1':
+        users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").update({'pno': 0})
+        print(h['name'])
+        cmds(str(h['name']))
+
+    else:
+        cmod()
 
 
 def info(query):
