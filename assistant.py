@@ -18,6 +18,20 @@ config = {
 firebase = pyrebase.initialize_app(config)
 
 db = firebase.database()
+temp=""
+
+def base():
+    global temp
+    users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").get()
+    h = users.val()
+
+    result = h['pno']
+    if result == '1':
+        users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").update({'pno': 0})
+        temp= h['name']
+        print(temp)
+    else:
+        base()
 
 def gett():
     users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").get()
@@ -32,7 +46,22 @@ def gett():
             info(h['name'])
     else:
         gett()
-        
+def sendmail():
+    global temp
+    time.sleep(1)
+    speak('say message')
+    base()
+    msg=temp
+    speak('say email')
+    base()
+    mid = temp
+
+    print(mid,msg)
+    import mail
+    mail.send(mid,msg)
+    time.sleep(1)
+    speak('email sent')
+    cmod()      
 def sms():
     speak('Say Phone Number')
     users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").get()
@@ -128,3 +157,4 @@ def info(query):
             speak("It is weird but I got nothing ")
             gett()
     gett()
+gett()
