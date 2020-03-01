@@ -46,6 +46,9 @@ def gett():
             info(h['name'])
     else:
         gett()
+        
+def speak(ans):
+    users = db.child('fir-test-e5d24').child('custo').child("-M0SenkbFLOOLa6v9S-5").update({'pno': 1,'name':'"'+ans+'\""'})
 def sendmail():
     global temp
     time.sleep(1)
@@ -97,7 +100,28 @@ def sms():
     print(response.text)
     speak('sms sent')
     cmod()
+def rdata():
+    global temp
+    base()
+    pp=temp.replace('"',"")
+
     
+    loc = ("data.xlsx")
+    wb = xlrd.open_workbook(loc)
+    sheet = wb.sheet_by_index(0)
+    for i in range(1, 212):
+        g = sheet.cell_value(i, 0)
+        if int(pp) == g:
+            pp = str(pp)
+            pp.replace("L", "")
+            index = i
+            break
+    idno = int(sheet.cell_value(i, 0))
+    name = str(sheet.cell_value(i, 1))
+    pno = str(sheet.cell_value(i, 2))
+    msgg = "Name :" + name + "Id :" + str(idno) + "\nPhone Number: " + str(pno)
+    speak(msgg)
+    cmod()    
 def cmds(g):
     if 'sms' in g:
         sms()
@@ -113,7 +137,7 @@ def cmds(g):
         
         
 def cmod():
-        speak('command mode activated')
+    speak('command mode activated')
     users = db.child('fir-test-e5d24').child('custo').child("-M0SenkdvhvicCboKSfm").get()
     h = users.val()
 
